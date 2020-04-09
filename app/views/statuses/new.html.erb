@@ -1,0 +1,14 @@
+
+<p> Form for new status </p>
+
+<%= form_with(model: @status) do |f| %>
+  <%= f.label :text %>
+  <%= f.text_field :text %>
+
+  <%= f.label :do_not_disturb %>
+  <%= f.check_box :do_not_disturb %>
+
+  <%= f.hidden :user_id, current_user.id %>
+
+  <%= submit_tag %>
+<% end %>

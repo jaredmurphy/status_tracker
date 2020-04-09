@@ -1,0 +1,11 @@
+<%= link_to "Add status", new_status_path %>
+
+<% if @statuses.any? %>
+  <% @statuses.each do |status| %>
+    <div>
+      <p> <%= status.text %> - DND: <%= status.do_not_disturb %> </p>
+    </div>
+  <% end %>
+<% else %>
+  <p> No statuses </p>
+<% end %>
