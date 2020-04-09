@@ -4,7 +4,7 @@ class StatusesController < ApplicationController
   end
 
   def new
-    @status = Status.new
+    @status = Status.new(user_id: current_user.id)
   end
 
   def create
@@ -12,9 +12,9 @@ class StatusesController < ApplicationController
 
     if @status.save
       flash[:success] = "Nice status bro"
-      redirect_to status_path(@status)
+      redirect_to statuses_path
     else
-      flash[:error] = @status.errors.full_messages
+      flash[:error] = @status.errors.full_messages.first
       render :new
     end
   end

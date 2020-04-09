@@ -13,6 +13,12 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
+    <% flash.each do |type, msg| %>
+      <div>
+        <p><%= msg %></p>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
