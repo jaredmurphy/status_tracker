@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_08_020525) do
+ActiveRecord::Schema.define(version: 2020_04_08_235347) do
 
   create_table "statuses", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.boolean "do_not_disturb"
+    t.boolean "do_not_disturb", default: false
     t.string "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

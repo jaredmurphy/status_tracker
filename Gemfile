@@ -31,9 +31,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -51,6 +51,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'rspec-rails', '~> 4.0.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
