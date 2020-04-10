@@ -1,6 +1,8 @@
 class StatusesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @statuses = Status.all
+    @statuses = current_user.statuses.order("created_at DESC").limit(10)
   end
 
   def new
