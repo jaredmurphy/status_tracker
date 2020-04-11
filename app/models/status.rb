@@ -3,4 +3,6 @@ class Status < ApplicationRecord
   validates :do_not_disturb, default: false
 
   belongs_to :user
+
+  scope :current, -> (user) { where(user: user).last }
 end
