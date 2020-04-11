@@ -45,5 +45,52 @@ RSpec.describe User, type: :model do
         it { is_expected.to be_invalid }
       end
     end
+
+    describe "friendships" do
+      let(:user) { create(:user) }
+      let(:associated) { create(:user) }
+
+      shared_examples_for :followed_user_relationship do
+        context "when the relationship is pending" do
+          let(:status) { :pending }
+
+          it "does not include the user" do
+            expect(subject).to_not include(associated)
+          end
+        end
+
+        context "when the relationship is accepted" do
+          let(:status) { :accepted }
+
+          it "includes the user" do
+            expect(subject).to include(associated)
+          end
+        end
+
+        context "when the relationship is blocked" do
+          let(:status) { :blocked }
+
+          it "does not include the user" do
+            expect(subject).to_not include(associated)
+          end
+        end
+      end
+
+      describe "#followers" do
+        subject(:followers) { user.followers }
+
+        before { create(:followed_user, following: user, follower: associated, status: status) }
+
+        it_behaves_like :followed_user_relationship
+      end
+
+      describe "#following" do
+        subject(:following) { user.following }
+
+        before { create(:followed_user, following: associated, follower: user, status: status) }
+
+        it_behaves_like :followed_user_relationship
+      end
+    end
   end
 end
