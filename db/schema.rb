@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_185429) do
+ActiveRecord::Schema.define(version: 2020_04_18_233344) do
 
   create_table "followed_users", force: :cascade do |t|
     t.integer "follower_id", null: false
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2020_04_18_185429) do
     t.string "email", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "login_token"
+    t.datetime "login_token_valid_until"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

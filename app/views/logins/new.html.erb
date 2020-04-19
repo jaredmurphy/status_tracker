@@ -1,0 +1,11 @@
+<h1>Login</h1>
+
+<%= link_to "Sign Up", new_registrations_path %>
+
+<%= form_with model: @user, url: logins_path, method: :post, local: true do |form| %>
+  <%= label_tag(:email, "Email") %>
+  <%= form.text_field(:email) %>
+  <%= submit_tag("Submit") %>
+<% end %>
+
+

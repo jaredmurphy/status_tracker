@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  validates :username, presence: true
-  # email
+  validates :username, :email, presence: true, uniqueness: true
 
   has_many :follower_requests, class_name: "FollowedUser", foreign_key: :following_id, dependent: :destroy
   has_many :following_requests, class_name: "FollowedUser", foreign_key: :follower_id, dependent: :destroy
