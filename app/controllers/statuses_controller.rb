@@ -2,6 +2,7 @@ class StatusesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @status ||= Status.new(user_id: current_user.id)
     @statuses = current_user.statuses.order("created_at DESC").limit(10)
   end
 
@@ -16,8 +17,8 @@ class StatusesController < ApplicationController
       flash[:success] = "Nice status bro"
       redirect_to statuses_path
     else
-      flash[:error] = @status.errors.full_messages.first
-      render :new
+      flash[:alert] = @status.errors.full_messages.first
+      render :index
     end
   end
 

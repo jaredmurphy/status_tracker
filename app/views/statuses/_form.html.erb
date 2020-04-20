@@ -1,0 +1,13 @@
+<p id=”alert”><%= alert %></p>
+
+<%= form_with model: status do |f| %>
+  <%= f.label :text %>
+  <%= f.text_field :text, fields_for_status(status, :text) %>
+
+  <%= f.label :do_not_disturb %>
+  <%= f.check_box :do_not_disturb, fields_for_status(status, :do_not_disturb) %>
+
+  <%= f.hidden_field :user_id, value: @status.user_id %>
+
+  <%= submit_tag %>
+<% end %>

@@ -4,7 +4,9 @@ module UserAuth
   attr_reader :current_user
 
   def authenticate_user!
-    set_current_user
+    unless current_user.present?
+      redirect_to :new_logins
+    end
   end
 
   def set_current_user

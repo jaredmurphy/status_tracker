@@ -1,4 +1,4 @@
-<%= link_to "Add status", new_status_path %>
+<%= render "form", status: @status %>
 
 <% if @statuses.any? %>
   <% @statuses.each do |status| %>
